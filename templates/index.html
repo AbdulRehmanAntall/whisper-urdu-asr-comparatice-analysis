@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Urdu ASR Evaluation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="file"],
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            background-color: #4f46e5;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4338ca;
+        }
+
+        .result {
+            margin-top: 30px;
+            background-color: #f0f9ff;
+            padding: 20px;
+            border-left: 6px solid #0ea5e9;
+            border-radius: 8px;
+        }
+
+        .result p {
+            margin: 8px 0;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Automatic Speech Recognition Evaluation (Urdu)</h2>
+
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="audio">Upload Audio File (.wav or .mp3):</label>
+                <input type="file" id="audio" name="audio" accept="audio/*" required>
+            </div>
+
+            <div>
+                <label for="actual_text">Actual Transcription:</label>
+                <textarea id="actual_text" name="actual_text" rows="4" placeholder="Enter the original Urdu sentence..."
+                    required></textarea>
+            </div>
+
+            <input type="hidden" name="language" value="urdu">
+
+            <button type="submit">Transcribe & Evaluate</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h3>Results</h3>
+            <p><strong>Actual Text:</strong> {{ result.actual }}</p>
+            <p><strong>Transcribed Text:</strong> {{ result.transcribed }}</p>
+            <p><strong>Word Error Rate (WER):</strong> {{ result.wer }}%</p>
+            <p><strong>Character Error Rate (CER):</strong> {{ result.cer }}%</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        &copy; 2025 Urdu ASR Evaluation Tool
+    </footer>
+</body>
+
+</html>
