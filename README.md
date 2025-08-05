@@ -58,6 +58,8 @@ uvicorn main:app --reload
 Navigate to **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 You’ll see an interface where users can record and upload Urdu speech samples. All entries are saved to the database via SQLAlchemy ORM.
 
+***⚠️ Important: Before running the app, make sure to manually add Urdu prompts to your PostgreSQL database using SQL queries. These prompts are necessary for the dropdown in the evaluation interface and for accurate transcription comparison.***
+
 ### 5. Evaluate ASR Models
 
 Run any of the model files (e.g., for Whisper-Small):
@@ -141,3 +143,4 @@ Feel free to:
 ### 8. Citation
 
 If this project contributes to your research or work, please consider citing the paper (coming soon) or referencing this GitHub repository.
+
