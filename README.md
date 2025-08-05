@@ -144,3 +144,8 @@ Feel free to:
 
 If this project contributes to your research or work, please consider citing the paper (coming soon) or referencing this GitHub repository.
 
+### 9. License
+
+This project is licensed under the [MIT License](LICENSE).
+
+You are free to use, modify, and distribute this project for personal, academic, or commercial purposes — as long as you include the original copyright.
