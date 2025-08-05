@@ -73,7 +73,7 @@ uvicorn whisper_small:app --reload
 <details>
 <summary>✨ Click to view the evaluation steps</summary>
 
-> ⚠️ **Note:** You must manually insert Urdu prompts into the database before using the evaluation system. This can be done using SQL queries directly on your PostgreSQL instance. Without prompt entries, the dropdown menu will appear empty.
+
 
 #### Step-by-Step Guide:
 
@@ -149,3 +149,4 @@ If this project contributes to your research or work, please consider citing the
 This project is licensed under the [MIT License](LICENSE).
 
 You are free to use, modify, and distribute this project for personal, academic, or commercial purposes — as long as you include the original copyright.
+
