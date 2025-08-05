@@ -15,7 +15,7 @@ templates = Jinja2Templates(directory="templates")
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Load Hugging Face Whisper small ASR pipeline
+# Load Hugging Face Whisper medium ASR pipeline
 asr = pipeline(
     "automatic-speech-recognition",
     model="openai/whisper-medium",

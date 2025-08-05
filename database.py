@@ -2,9 +2,13 @@ from sqlalchemy import create_engine, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
+from dotenv import load_dotenv
 
-# Database configuration
-DATABASE_URL = 'postgresql://postgres:789645@localhost/VoiceDataCollection'
+
+load_dotenv()  
+
+# Access the database URL
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
