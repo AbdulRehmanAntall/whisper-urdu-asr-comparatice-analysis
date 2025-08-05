@@ -55,10 +55,9 @@ Run any of the model files (e.g., for Whisper-Small):
  ```bash
 uvicorn whisper_small:app --reload
 ```
-## 📝 How to Use
 
 <details>
-<summary>Click to view instructions</summary>
+
 
 1. A FastAPI interface will start at: `http://localhost:8000`
 2. Upload a recorded **Urdu voice sample**.
@@ -80,3 +79,4 @@ uvicorn whisper_medium:app --reload
 
 
 ```
+
