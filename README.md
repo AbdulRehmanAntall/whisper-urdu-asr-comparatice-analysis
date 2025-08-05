@@ -80,3 +80,18 @@ uvicorn whisper_medium:app --reload
 
 ```
 
+### 6. Dataset
+The uploads/ folder contains Urdu recordings collected during this project. These are provided for reproducibility and further model training or evaluation. Contributions to this dataset are encouraged – extend it by adding more recordings and fine-tune models accordingly.
+
+### 7.Contributing
+Want to extend the dataset? Add a new evaluation script? Tune a model?
+
+Feel free to:
+1. Fork the repo
+2. Add improvements
+3. Open pull requests!
+
+### 8.Citation
+If this project contributes to your research or work, please consider citing the paper (coming soon) or referencing this GitHub repository.
+
+
