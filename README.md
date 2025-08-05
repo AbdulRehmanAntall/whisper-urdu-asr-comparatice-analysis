@@ -1,6 +1,6 @@
 # Urdu ASR Comparative Analysis using Whisper Models
 
-This repository contains the complete codebase and dataset for the research project: **"Comparative Performance Analysis of Lightweight Whisper Models for Urdu Automatic Speech Recognition (ASR)."**  
+This repository contains the complete codebase and dataset for the research project: **"Comparative Performance Analysis of Lightweight Whisper Models for Urdu Automatic Speech Recognition (ASR)."**
 The project evaluates the zero-shot capabilities of Whisper-Tiny, Whisper-Base, and Whisper-Small models on real-world Urdu speech samples using open-source tools and FastAPI-based web services.
 
 ---
@@ -9,12 +9,10 @@ The project evaluates the zero-shot capabilities of Whisper-Tiny, Whisper-Base, 
 
 Automatic Speech Recognition (ASR) systems have seen great progress in high-resource languages, yet remain underdeveloped for low-resource ones like Urdu. This project explores the performance of multilingual Whisper models for Urdu by:
 
-- Collecting native Urdu voice recordings.
-- Evaluating Whisper-Tiny, Base, and Small models.
-- Measuring **Word Error Rate (WER)** and **Character Error Rate (CER)**.
-- Identifying performance gaps and bottlenecks for Urdu ASR.
-
----
+* Collecting native Urdu voice recordings.
+* Evaluating Whisper-Tiny, Base, and Small models.
+* Measuring **Word Error Rate (WER)** and **Character Error Rate (CER)**.
+* Identifying performance gaps and bottlenecks for Urdu ASR.
 
 ---
 
@@ -23,9 +21,10 @@ Automatic Speech Recognition (ASR) systems have seen great progress in high-reso
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/whisper-urdu-asr-comparative-analysis.git
+git clone [https://github.com/AbdulRehmanAntall/whisper-urdu-asr-comparatice-analysi]
 cd whisper-urdu-asr-comparative-analysis
 ```
+
 ### 2. Install Dependencies
 
 ```bash
@@ -45,53 +44,90 @@ DATABASE_URL=postgresql://username:password@localhost:5432/your_db_name
 ```bash
 uvicorn main:app --reload
 ```
-Navigate to **http://127.0.0.1:8000**
+
+Navigate to **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 You’ll see an interface where users can record and upload Urdu speech samples. All entries are saved to the database via SQLAlchemy ORM.
 
 ### 5. Evaluate ASR Models
 
 Run any of the model files (e.g., for Whisper-Small):
 
- ```bash
+```bash
 uvicorn whisper_small:app --reload
 ```
 
+### 🧪 Evaluation Workflow
+
 <details>
+<summary>✨ Click to view the evaluation steps</summary>
 
+> ⚠️ **Note:** You must manually insert Urdu prompts into the database before using the evaluation system. This can be done using SQL queries directly on your PostgreSQL instance. Without prompt entries, the dropdown menu will appear empty.
 
-1. A FastAPI interface will start at: `http://localhost:8000`
-2. Upload a recorded **Urdu voice sample**.
-3. Select the correct **prompt** from the dropdown.
-4. The app will return:
-   - 🟢 **WER** (Word Error Rate)
-   - 🟢 **CER** (Character Error Rate)
-5. Results can be:
-   - Logged manually for tracking.
-   - Exported for performance evaluation.
+#### Step-by-Step Guide:
+
+1. **Start the FastAPI Interface**
+   Navigate to `http://localhost:8000` to access the frontend.
+
+2. **Select a Prompt**
+   Use the dropdown menu to choose from predefined Urdu prompts. These sentences are used as ground truth for ASR evaluation.
+
+3. **Upload Your Recording**
+   Choose your Urdu audio file recorded against the selected prompt. Supported formats: `.wav`, `.mp3`, `.m4a` (automatically converted if needed).
+
+4. **Submit for Evaluation**
+   Once submitted, the system will:
+
+   * Transcribe the audio using the selected Whisper model
+   * Compare the transcription with the selected prompt
+   * Calculate:
+
+     * 🟢 **Word Error Rate (WER)** — Measures word-level mistakes
+     * 🟢 **Character Error Rate (CER)** — Measures character-level mistakes
+
+5. **Review Feedback**
+   Get instant evaluation feedback shown on the results page, with:
+
+   * Highlighted errors (optional enhancement)
+   * Accuracy percentages
+
+6. **Manual Logging / Exporting**
+   Results are also stored locally in CSV files (`log.csv`) for manual review or future export.
+
+   * Format: `filename, prompt_key, ground_truth, transcription, WER, CER`
+
+7. **Compare Across Models**
+   Repeat the above steps using different Whisper variants to benchmark performance.
 
 </details>
 
-Repeat for Whisper-Tiny, Whisper-Base, Whisper-Medium:
- ```bash
+Repeat for other models:
+
+```bash
 uvicorn whisper_tiny:app --reload
 uvicorn whisper_base:app --reload
 uvicorn whisper_medium:app --reload
-
-
 ```
 
-### 6. Dataset
-The uploads/ folder contains Urdu recordings collected during this project. These are provided for reproducibility and further model training or evaluation. Contributions to this dataset are encouraged – extend it by adding more recordings and fine-tune models accordingly.
+---
 
-### 7.Contributing
+### 6. Dataset
+
+The `uploads/` folder contains Urdu recordings collected during this project. These are provided for reproducibility and further model training or evaluation. Contributions to this dataset are encouraged — extend it by adding more recordings and fine-tune models accordingly.
+
+---
+
+### 7. Contributing
+
 Want to extend the dataset? Add a new evaluation script? Tune a model?
 
 Feel free to:
+
 1. Fork the repo
 2. Add improvements
 3. Open pull requests!
 
-### 8.Citation
+---
+
+### 8. Citation
+
 If this project contributes to your research or work, please consider citing the paper (coming soon) or referencing this GitHub repository.
-
-
