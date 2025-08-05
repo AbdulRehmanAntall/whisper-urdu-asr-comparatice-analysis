@@ -8,7 +8,8 @@
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background-color: #f5f7fa;
+            background-color: #121212;
+            color: #e0e0e0;
             margin: 0;
             padding: 0;
         }
@@ -16,14 +17,14 @@
         .container {
             max-width: 600px;
             margin: 40px auto;
-            background-color: #fff;
+            background-color: #1e1e1e;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
         }
 
         h2 {
-            color: #333;
+            color: #ffffff;
             margin-bottom: 24px;
             text-align: center;
         }
@@ -36,7 +37,7 @@
 
         label {
             font-weight: bold;
-            color: #555;
+            color: #cccccc;
         }
 
         input[type="file"],
@@ -44,13 +45,19 @@
             padding: 10px;
             font-size: 16px;
             border-radius: 6px;
-            border: 1px solid #ccc;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+        }
+
+        textarea::placeholder {
+            color: #888;
         }
 
         button {
             padding: 12px;
             font-size: 16px;
-            background-color: #4f46e5;
+            background-color: #3b82f6;
             color: #fff;
             border: none;
             border-radius: 6px;
@@ -59,26 +66,31 @@
         }
 
         button:hover {
-            background-color: #4338ca;
+            background-color: #2563eb;
         }
 
         .result {
             margin-top: 30px;
-            background-color: #f0f9ff;
+            background-color: #1a1a1a;
             padding: 20px;
             border-left: 6px solid #0ea5e9;
             border-radius: 8px;
         }
 
+        .result h3 {
+            color: #ffffff;
+        }
+
         .result p {
             margin: 8px 0;
+            color: #d0d0d0;
         }
 
         footer {
             margin-top: 50px;
             text-align: center;
             font-size: 14px;
-            color: #888;
+            color: #666;
         }
     </style>
 </head>
@@ -95,8 +107,7 @@
 
             <div>
                 <label for="actual_text">Actual Transcription:</label>
-                <textarea id="actual_text" name="actual_text" rows="4" placeholder="Enter the original Urdu sentence..."
-                    required></textarea>
+                <textarea id="actual_text" name="actual_text" rows="4" placeholder="Enter the original Urdu sentence..." required></textarea>
             </div>
 
             <input type="hidden" name="language" value="urdu">

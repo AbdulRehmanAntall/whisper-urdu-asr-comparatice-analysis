@@ -18,7 +18,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # Load Hugging Face Whisper small ASR pipeline
 asr = pipeline(
     "automatic-speech-recognition",
-    model="openai/whisper-small",
+    model="openai/whisper-tiny",
     device=0 if torch.cuda.is_available() else -1,
 )
 

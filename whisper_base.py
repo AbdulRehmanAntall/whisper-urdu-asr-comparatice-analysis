@@ -15,17 +15,29 @@ templates = Jinja2Templates(directory="templates")
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Load Hugging Face Whisper small ASR pipeline
+# Load Hugging Face Whisper base ASR pipeline
 asr = pipeline(
     "automatic-speech-recognition",
-    model="openai/whisper-small",
+    model="openai/whisper-base",
     device=0 if torch.cuda.is_available() else -1,
 )
 
 def convert_to_wav(input_path: str) -> str:
+    """
+    If the file is already a mono 16kHz WAV file, return as-is.
+    Otherwise, convert to 16kHz mono WAV using ffmpeg.
+    """
     if input_path.lower().endswith(".wav"):
-        return input_path
-    output_path = os.path.splitext(input_path)[0] + ".wav"
+        try:
+            probe = ffmpeg.probe(input_path)
+            stream = next((s for s in probe['streams'] if s['codec_type'] == 'audio'), None)
+            if stream and int(stream['sample_rate']) == 16000 and int(stream['channels']) == 1:
+                return input_path  # Already suitable
+        except Exception as e:
+            print(f"ffmpeg probe failed: {e}")
+
+    # Convert to 16kHz mono WAV
+    output_path = os.path.splitext(input_path)[0] + "_converted.wav"
     (
         ffmpeg
         .input(input_path)
@@ -51,10 +63,10 @@ async def handle_upload(
     with open(saved_path, "wb") as buffer:
         shutil.copyfileobj(audio.file, buffer)
 
-    # Convert to wav with proper specs
+    # Convert to proper WAV format if needed
     wav_path = convert_to_wav(saved_path)
 
-    # Transcribe with forced Urdu language and transcribe task
+    # Transcribe with specified language
     transcription_result = asr(
         wav_path,
         generate_kwargs={"language": language, "task": "transcribe"}
