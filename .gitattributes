@@ -9,5 +9,6 @@
 *.png binary
 *.jpg binary
 
-# Linguist language override
-*.ipynb linguist-language=Jupyter Notebook
+
+*.html linguist-detectable=false
+*.py linguist-language=Python
