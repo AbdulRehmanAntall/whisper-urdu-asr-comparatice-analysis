@@ -21,13 +21,23 @@ Automatic Speech Recognition (ASR) systems have seen great progress in high-reso
 ### 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/AbdulRehmanAntall/whisper-urdu-asr-comparatice-analysi]
+git clone https://github.com/yourusername/whisper-urdu-asr-comparative-analysis.git
 cd whisper-urdu-asr-comparative-analysis
 ```
 
-### 2. Install Dependencies
+### 2. Set Up Virtual Environment and Install Dependencies
 
 ```bash
+# Create a virtual environment
+python -m venv venv
+
+# Activate the environment (Windows)
+venv\Scripts\activate
+
+# Or activate (Linux/macOS)
+source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
